@@ -140,9 +140,7 @@ void ass_set_fonts(ASS_Renderer *priv, const char *default_font,
                    const char *default_family, int dfp,
                    const char *config, int update)
 {
-    if (priv->state.font)
-        ass_cache_dec_ref(priv->state.font);
-
+    free(priv->state.font);
     free(priv->settings.default_font);
     free(priv->settings.default_family);
     priv->settings.default_font = default_font ? strdup(default_font) : 0;
